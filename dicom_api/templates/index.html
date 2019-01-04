@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    >
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="{{ url('static', filename='images/favicon.ico') }}">
+    <title>DICOM records</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+          crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <link
+            rel="stylesheet"
+            href="{{ url('static', filename='styles/main.css') }}"
+    >
+
+    <script src="{{ url('static', filename='js/main.js') }}"
+            type="text/javascript"></script>
+
+</head>
+<body>
+<header class="header">
+    <a href="https://github.com/truskovskiyk/dicom_app"
+       class="fork-me-on-github">
+        <img
+                src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"
+                alt="Fork me on GitHub"
+        >
+    </a>
+    <div class="banner">
+        <h1 class="banner-title">DICOM records</h1>
+        <p>
+            DICOM records
+        </p>
+    </div>
+</header>
+<div class="container">
+    <h1 class="subtitle">
+        DICOM tags
+    </h1>
+
+
+        <div class="js-table table-responsive">
+
+        </div>
+
+        <script>
+
+            function main() {
+                fetch('{{ url("records_logs") }}', {
+                    method: 'GET'
+                }).then(
+                    response => response.json()
+                ).then(
+                    data => TabulateRecords(data)
+                )
+            };
+            main();
+        </script>
+
+
+    </div>
+</body>
+</html>

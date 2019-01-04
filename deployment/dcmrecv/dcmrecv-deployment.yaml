@@ -1,0 +1,46 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.17.0 (a74acad)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: dcmrecv
+  name: dcmrecv
+spec:
+
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: dcmrecv
+    spec:
+      containers:
+      - args:
+        - dcmrecv
+        - -od
+        - /data/dicom-dcmrecv/storage
+        - --verbose
+        - "8083"
+        - --config-file
+        - storescp.cfg
+        - default
+        image: truskovskyi/dcmrecv:latest
+        name: dcmrecv
+        ports:
+        - containerPort: 8083
+        resources: {}
+        volumeMounts:
+        - mountPath: /data/dicom-dcmrecv/storage
+          name: dcmrecv-storage
+      restartPolicy: Always
+      volumes:
+      - name: dcmrecv-storage
+        nfs:
+          server: 10.27.242.105
+          path: "/"
+
