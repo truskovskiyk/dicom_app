@@ -2,10 +2,6 @@
 This is WIP applications
 
 
-## Production url
-* API - http://35.202.37.159:8080/
-* DICOM storage SCP - host 35.239.174.149 port 8083
-
 ## Test
 TODO
 
