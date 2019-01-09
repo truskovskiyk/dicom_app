@@ -1,6 +1,9 @@
 # DICOM records
 This is WIP applications
 
+## Production url
+* API - http://104.198.185.94:8080/
+* DICOM storage SCP - host 35.202.37.159 port 8083
 
 ## Test
 TODO
@@ -100,7 +103,7 @@ brew install dcmtk
 2. Send test image
 ```bash
 dcmsend --verbose <host> <port> <image>
-example: dcmsend --verbose 35.239.174.149 8083 ./data/patient_1/image_49.dcm
+example: dcmsend --verbose 35.202.37.159 8083 ./data/patient_1/image_49.dcm
 ```
 
 
